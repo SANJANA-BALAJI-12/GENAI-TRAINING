@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoT Math Solver</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="glass-panel">
+        <header>
+            <div class="glow-orb"></div>
+            <h2>Math Solver</h2>
+            <p>Powered by Groq Chain-of-Thought</p>
+        </header>
+
+        <form method="post" class="solver-form">
+            <div class="input-group">
+                <input type="text" name="question" value="{{ question }}" placeholder="e.g., exactly 15% of 80..." required autocomplete="off">
+                <button type="submit">
+                    <span>Solve</span>
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </form>
+
+        {% if solution %}
+        <div class="solution-card">
+            <div class="solution-header">Reasoning steps</div>
+            <pre>{{ solution }}</pre>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
