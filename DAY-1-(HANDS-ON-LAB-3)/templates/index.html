@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AST Code Reviewer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="glass-panel">
+        <header>
+            <div class="glow-orb"></div>
+            <h2>AST Code Reviewer</h2>
+            <p>Self-Reflecting Agent powered by Groq</p>
+        </header>
+
+        <main>
+            <div class="editor-section">
+                <form method="post" class="review-form" id="reviewForm">
+                    <div class="textarea-wrapper">
+                        <textarea name="code" rows="12" placeholder="Paste python code to review...&#10;def example():&#10;    print('hello world')" required spellcheck="false">{{ code_input }}</textarea>
+                    </div>
+                    <button type="submit" id="submitBtn">
+                        <span class="btn-text">Analyze & Reflect</span>
+                        <div class="loader" id="loader" style="display: none;"></div>
+                    </button>
+                </form>
+            </div>
+
+            {% if review_output %}
+            <div class="output-section">
+                <div class="solution-card">
+                    <div class="solution-header">Agent Reflection Output</div>
+                    <pre>{{ review_output }}</pre>
+                </div>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('reviewForm').addEventListener('submit', function() {
+            const btn = document.getElementById('submitBtn');
+            btn.querySelector('.btn-text').style.display = 'none';
+            btn.querySelector('#loader').style.display = 'block';
+            btn.classList.add('loading');
+        });
+    </script>
+</body>
+</html>
