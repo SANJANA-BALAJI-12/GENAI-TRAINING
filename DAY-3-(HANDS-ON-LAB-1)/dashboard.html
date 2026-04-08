@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.r1 {color: #008000; text-decoration-color: #008000}
+.r2 {color: #008000; text-decoration-color: #008000; font-weight: bold}
+.r3 {color: #7f7f7f; text-decoration-color: #7f7f7f; font-style: italic}
+.r4 {color: #008080; text-decoration-color: #008080}
+.r5 {color: #008080; text-decoration-color: #008080; font-weight: bold}
+.r6 {color: #800080; text-decoration-color: #800080; font-weight: bold}
+.r7 {color: #800080; text-decoration-color: #800080}
+.r8 {color: #808000; text-decoration-color: #808000; font-weight: bold}
+.r9 {font-weight: bold}
+.r10 {color: #00ff00; text-decoration-color: #00ff00; font-weight: bold}
+.r11 {color: #000080; text-decoration-color: #000080; font-weight: bold}
+.r12 {color: #000080; text-decoration-color: #000080}
+.r13 {color: #c0c0c0; text-decoration-color: #c0c0c0}
+.r14 {color: #808000; text-decoration-color: #808000}
+body {
+    color: #000000;
+    background-color: #ffffff;
+}
+</style>
+</head>
+<body>
+    <pre style="font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><code style="font-family:inherit"><span class="r1">┌───────────────────────────────────────────────┐</span>
+<span class="r1">│</span> <span class="r2">🚀 Starting Distributed GenAI ETL Pipeline...</span> <span class="r1">│</span>
+<span class="r1">└───────────────────────────────────────────────┘</span>
+<span class="r3">Integration Active: API Request Traced to LangSmith.</span>
+
+<span class="r4">➜ Running Extract Node...</span>
+<span class="r4">➜ Running Transform Node...</span>
+<span class="r4">➜ Running Load Node </span><span class="r5">(</span><span class="r4">GenAI</span><span class="r5">)</span><span class="r4">...</span>
+
+<span class="r6">📊 OBSERVABILITY METRICS:</span>
+<span class="r7">┌────────────────────────────────┬───────┐</span>
+<span class="r7">│</span><span class="r6"> Metric Name                    </span><span class="r7">│</span><span class="r6"> Value </span><span class="r7">│</span>
+<span class="r7">├────────────────────────────────┼───────┤</span>
+<span class="r7">│</span><span class="r4"> Extracted Rows                 </span><span class="r7">│</span><span class="r1">     3 </span><span class="r7">│</span>
+<span class="r7">│</span><span class="r4"> Rows Dropped Guardrail         </span><span class="r7">│</span><span class="r1">     1 </span><span class="r7">│</span>
+<span class="r7">│</span><span class="r4"> Estimated Tokens Used          </span><span class="r7">│</span><span class="r1">    57 </span><span class="r7">│</span>
+<span class="r7">└────────────────────────────────┴───────┘</span>
+
+<span class="r8">📝 AUDIT TRAIL:</span>
+ 🔹 <span class="r9">[</span><span class="r10">11:37:26</span><span class="r9">]</span> EXTRACT: Loaded <span class="r5">3</span> rows.
+ 🔹 <span class="r9">[</span><span class="r10">11:37:26</span><span class="r9">]</span> TRANSFORM: Dropped <span class="r5">1</span> rows, masked PII, enforced length 
+constraints.
+ 🔹 <span class="r9">[</span><span class="r10">11:37:26</span><span class="r9">]</span> LOAD: GenAI enrichment complete. Saved to destination.
+
+<span class="r11">✅ FINAL PROCESSED DATA:</span>
+<span class="r12">┌────┬───────────────────────────────────────────────────┬────────┬───────────┐</span>
+<span class="r12">│</span><span class="r11"> ID </span><span class="r12">│</span><span class="r11"> User Text                                         </span><span class="r12">│</span><span class="r11"> Intent </span><span class="r12">│</span><span class="r11"> Sentiment </span><span class="r12">│</span>
+<span class="r12">├────┼───────────────────────────────────────────────────┼────────┼───────────┤</span>
+<span class="r12">│</span><span class="r4">  1 </span><span class="r12">│</span><span class="r13"> Great service! My phone is [REDACTED].            </span><span class="r12">│</span><span class="r14"> praise </span><span class="r12">│</span><span class="r1"> pos       </span><span class="r12">│</span>
+<span class="r12">│</span><span class="r4">  3 </span><span class="r12">│</span><span class="r13"> App crashed when I clicked save but I like the    </span><span class="r12">│</span><span class="r14"> bug    </span><span class="r12">│</span><span class="r1"> neg       </span><span class="r12">│</span>
+<span class="r12">│</span><span class="r4">    </span><span class="r12">│</span><span class="r13"> colors. App crashed when I clicked save but I     </span><span class="r12">│</span><span class="r14">        </span><span class="r12">│</span><span class="r1">           </span><span class="r12">│</span>
+<span class="r12">│</span><span class="r4">    </span><span class="r12">│</span><span class="r13"> like th                                           </span><span class="r12">│</span><span class="r14">        </span><span class="r12">│</span><span class="r1">           </span><span class="r12">│</span>
+<span class="r12">└────┴───────────────────────────────────────────────────┴────────┴───────────┘</span>
+
+
+<span class="r1">┌─────────────────────────────────────────────────────────────────────────────┐</span>
+<span class="r1">│</span> <span class="r2">LangSmith Trace Logged Successfully ✅</span>                                      <span class="r1">│</span>
+<span class="r1">│</span> <span class="r2">Navigate to smith.langchain.com to view your workflow performance!</span>          <span class="r1">│</span>
+<span class="r1">└─────────────────────────────────────────────────────────────────────────────┘</span>
+</code></pre>
+</body>
+</html>
