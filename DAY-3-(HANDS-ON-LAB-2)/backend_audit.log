@@ -1,0 +1,56 @@
+2026-04-08 12:32:21,725 - INFO - [app.py:29] - Initializing Hugging Face sentiment model...
+2026-04-08 12:32:22,859 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/lxyuan/distilbert-base-multilingual-cased-sentiments-student/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-08 12:32:22,870 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/cf991100d706c13c0a080c097134c05b7f436c45/config.json "HTTP/1.1 200 OK"
+2026-04-08 12:32:22,887 - INFO - [_client.py:1025] - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/cf991100d706c13c0a080c097134c05b7f436c45/config.json "HTTP/1.1 200 OK"
+2026-04-08 12:32:23,215 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/lxyuan/distilbert-base-multilingual-cased-sentiments-student/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-04-08 12:32:23,659 - INFO - [_client.py:1025] - HTTP Request: GET https://huggingface.co/api/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/xet-read-token/cf991100d706c13c0a080c097134c05b7f436c45 "HTTP/1.1 200 OK"
+2026-04-08 12:32:42,604 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/lxyuan/distilbert-base-multilingual-cased-sentiments-student/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-08 12:32:42,619 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/cf991100d706c13c0a080c097134c05b7f436c45/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-08 12:32:42,641 - INFO - [_client.py:1025] - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/cf991100d706c13c0a080c097134c05b7f436c45/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-08 12:32:42,998 - INFO - [_client.py:1025] - HTTP Request: GET https://huggingface.co/api/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-08 12:32:43,268 - INFO - [_client.py:1025] - HTTP Request: GET https://huggingface.co/api/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-08 12:32:43,538 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/lxyuan/distilbert-base-multilingual-cased-sentiments-student/resolve/main/tokenizer.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-08 12:32:43,551 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/cf991100d706c13c0a080c097134c05b7f436c45/tokenizer.json "HTTP/1.1 200 OK"
+2026-04-08 12:32:43,579 - INFO - [_client.py:1025] - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/cf991100d706c13c0a080c097134c05b7f436c45/tokenizer.json "HTTP/1.1 200 OK"
+2026-04-08 12:32:43,952 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/lxyuan/distilbert-base-multilingual-cased-sentiments-student/resolve/main/tokenizer.model "HTTP/1.1 404 Not Found"
+2026-04-08 12:32:44,346 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/lxyuan/distilbert-base-multilingual-cased-sentiments-student/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-04-08 12:32:44,649 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/lxyuan/distilbert-base-multilingual-cased-sentiments-student/resolve/main/special_tokens_map.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-08 12:32:44,661 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/cf991100d706c13c0a080c097134c05b7f436c45/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-04-08 12:32:44,686 - INFO - [_client.py:1025] - HTTP Request: GET https://huggingface.co/api/resolve-cache/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student/cf991100d706c13c0a080c097134c05b7f436c45/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-04-08 12:32:44,964 - INFO - [_client.py:1025] - HTTP Request: HEAD https://huggingface.co/lxyuan/distilbert-base-multilingual-cased-sentiments-student/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-04-08 12:32:46,586 - INFO - [_client.py:1025] - HTTP Request: GET https://huggingface.co/api/models/lxyuan/distilbert-base-multilingual-cased-sentiments-student "HTTP/1.1 200 OK"
+2026-04-08 12:33:52,310 - INFO - [app.py:185] - =========================================
+2026-04-08 12:33:52,311 - INFO - [app.py:186] - --- New LangGraph Execution Triggered ---
+2026-04-08 12:33:52,347 - INFO - [app.py:54] - Node [analyze_sentiment_node] - analyzing query: im happy with your I love the fact that you resolved my problem so quickly and efficiently, you guys are amazing!
+2026-04-08 12:33:53,100 - INFO - [app.py:76] - Node [analyze_sentiment_node] - Result: Positive (Confidence: 0.97)
+2026-04-08 12:33:53,101 - INFO - [app.py:114] - Routing Condition -> Positive Branch
+2026-04-08 12:33:53,103 - INFO - [app.py:85] - Node [route_positive_node] triggered -> Routed to 'Customer Success & Referrals' Team (Positive)
+2026-04-08 12:33:53,104 - INFO - [app.py:200] - --- Workflow Execution Finished ---
+2026-04-08 12:39:14,361 - INFO - [app.py:294] - =========================================
+2026-04-08 12:39:14,361 - INFO - [app.py:295] - --- New LangGraph Execution Triggered ---
+2026-04-08 12:39:14,363 - INFO - [app.py:54] - Node [analyze_sentiment_node] - analyzing query: Im happy with your service
+2026-04-08 12:39:14,419 - INFO - [app.py:76] - Node [analyze_sentiment_node] - Result: Positive (Confidence: 0.98)
+2026-04-08 12:39:14,420 - INFO - [app.py:114] - Routing Condition -> Positive Branch
+2026-04-08 12:39:14,421 - INFO - [app.py:85] - Node [route_positive_node] triggered -> Routed to 'Customer Success & Referrals' Team (Positive)
+2026-04-08 12:39:14,421 - INFO - [app.py:309] - --- Workflow Execution Finished ---
+2026-04-08 12:39:36,071 - INFO - [app.py:294] - =========================================
+2026-04-08 12:39:36,072 - INFO - [app.py:295] - --- New LangGraph Execution Triggered ---
+2026-04-08 12:39:36,075 - INFO - [app.py:54] - Node [analyze_sentiment_node] - analyzing query: Im happy with your service
+2026-04-08 12:39:36,112 - INFO - [app.py:76] - Node [analyze_sentiment_node] - Result: Positive (Confidence: 0.98)
+2026-04-08 12:39:36,112 - INFO - [app.py:114] - Routing Condition -> Positive Branch
+2026-04-08 12:39:36,113 - INFO - [app.py:85] - Node [route_positive_node] triggered -> Routed to 'Customer Success & Referrals' Team (Positive)
+2026-04-08 12:39:36,114 - INFO - [app.py:309] - --- Workflow Execution Finished ---
+2026-04-08 12:42:49,964 - INFO - [app.py:296] - =========================================
+2026-04-08 12:42:49,964 - INFO - [app.py:297] - --- New LangGraph Execution Triggered ---
+2026-04-08 12:42:49,966 - INFO - [app.py:54] - Node [analyze_sentiment_node] - analyzing query: im extremly unsatisfied
+2026-04-08 12:42:50,017 - INFO - [app.py:76] - Node [analyze_sentiment_node] - Result: Negative (Confidence: 0.76)
+2026-04-08 12:42:50,017 - INFO - [app.py:117] - Routing Condition -> Negative Branch
+2026-04-08 12:42:50,018 - INFO - [app.py:97] - Node [route_negative_node] triggered -> Routed to 'Priority Escalations & Retention' Team (Negative)
+2026-04-08 12:42:50,019 - INFO - [app.py:311] - --- Workflow Execution Finished ---
+2026-04-08 12:43:53,870 - INFO - [app.py:296] - =========================================
+2026-04-08 12:43:53,870 - INFO - [app.py:297] - --- New LangGraph Execution Triggered ---
+2026-04-08 12:43:53,873 - INFO - [app.py:54] - Node [analyze_sentiment_node] - analyzing query: I'm Happy with your customer service
+2026-04-08 12:43:53,918 - INFO - [app.py:76] - Node [analyze_sentiment_node] - Result: Positive (Confidence: 0.97)
+2026-04-08 12:43:53,919 - INFO - [app.py:114] - Routing Condition -> Positive Branch
+2026-04-08 12:43:53,920 - INFO - [app.py:85] - Node [route_positive_node] triggered -> Routed to 'Customer Success & Referrals' Team (Positive)
+2026-04-08 12:43:53,920 - INFO - [app.py:311] - --- Workflow Execution Finished ---
