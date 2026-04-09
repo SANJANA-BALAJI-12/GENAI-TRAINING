@@ -1,0 +1,26 @@
+{
+  "servers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${input:github_mcp_pat}"
+      }
+    },
+    "github-contributors": {
+      "type": "http",
+      "url": "https://registry.modelcontextprotocol.io/servers/github-contributors",
+      "headers": {
+        "Authorization": "Bearer ${input:github_mcp_pat}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "github_mcp_pat",
+      "description": "YOUR_GITHUB_PAT_HERE",
+      "password": true
+    }
+  ]
+}

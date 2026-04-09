@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Web Search Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #818cf8, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        input {
+            flex: 1;
+            padding: 16px 24px;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            outline: none;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        input::placeholder {
+            color: var(--text-muted);
+        }
+
+        button {
+            padding: 0 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            background: var(--primary);
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        #results {
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            display: none;
+        }
+
+        #results.visible {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #818cf8;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .answer-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            color: #e2e8f0;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .sources-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .source-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            transition: background 0.2s;
+        }
+
+        .source-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .source-item a {
+            color: #a5b4fc;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+        }
+
+        .source-item a:hover {
+            color: #c7d2fe;
+            text-decoration: underline;
+        }
+
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading .spinner {
+            display: inline-block;
+        }
+        
+        .loading .button-text {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .search-box {
+                flex-direction: column;
+            }
+            button {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Web Search</h1>
+        <p class="subtitle">Ask any question to search the web and synthesize an answer.</p>
+        
+        <div class="search-box">
+            <input type="text" id="query" placeholder="What would you like to know?" autocomplete="off">
+            <button id="searchBtn" onclick="search()">
+                <div class="spinner"></div>
+                <span class="button-text">Search</span>
+            </button>
+        </div>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        const queryInput = document.getElementById('query');
+        const searchBtn = document.getElementById('searchBtn');
+        const resultsDiv = document.getElementById('results');
+
+        async function search() {
+            const query = queryInput.value.trim();
+            if (!query) {
+                queryInput.focus();
+                return;
+            }
+            
+            // UI Loading state
+            searchBtn.classList.add('loading');
+            searchBtn.disabled = true;
+            queryInput.disabled = true;
+            resultsDiv.classList.remove('visible');
+            setTimeout(() => { resultsDiv.style.display = 'none'; }, 300);
+            
+            try {
+                const response = await fetch('http://127.0.0.1:8000/search', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Parse markdown-style sources from the backend
+                const processedSources = data.sources.map(s => {
+                    const match = s.match(/- \[(.*?)\]\((.*?)\)/);
+                    if (match) {
+                        return `<li class="source-item"><a href="${match[2]}" target="_blank" rel="noopener noreferrer">${match[1]}</a></li>`;
+                    }
+                    return `<li class="source-item">${s}</li>`;
+                }).join('');
+
+                resultsDiv.innerHTML = `
+                    <div class="section-title">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Synthesized Answer
+                    </div>
+                    <div class="answer-box">${data.answer || 'No answer generated.'}</div>
+                    
+                    ${processedSources ? `
+                    <div class="section-title" style="margin-top: 30px;">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                        Sources
+                    </div>
+                    <ul class="sources-list">${processedSources}</ul>
+                    ` : ''}
+                `;
+                
+                resultsDiv.style.display = 'block';
+                // Trigger animation
+                setTimeout(() => {
+                    resultsDiv.classList.add('visible');
+                }, 50);
+
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="answer-box" style="border-color: #ef4444; color: #fca5a5;">
+                        <strong>Connection Error:</strong> Could not reach the backend. Are you sure 'app.py' is running? (${error.message})
+                    </div>
+                `;
+                resultsDiv.style.display = 'block';
+                setTimeout(() => resultsDiv.classList.add('visible'), 50);
+            } finally {
+                searchBtn.classList.remove('loading');
+                searchBtn.disabled = false;
+                queryInput.disabled = false;
+                queryInput.focus();
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            queryInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') search();
+            });
+        });
+    </script>
+</body>
+</html>
