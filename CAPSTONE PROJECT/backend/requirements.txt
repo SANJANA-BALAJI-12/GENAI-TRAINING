@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+crewai
+crewai-tools
+chromadb
+langchain-groq
+python-dotenv
+pydantic
+requests
+openai
+motor
